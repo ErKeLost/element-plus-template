@@ -43,7 +43,10 @@
             <i-ep-add-location />
             <i-ep-aim />
             <i-ep-picture-rounded color="red" font-size="30px" />
-            <div v-loading="{ text: 'I LOVE YOU...' }" style="height: 500px">
+            <div
+              v-loading="{ text: 'I LOVE YOU 我是不一样的版本...' }"
+              style="height: 500px"
+            >
               Loading Area
             </div>
             <div v-loading="{ text: 'erkelost adny...' }" style="height: 500px">
