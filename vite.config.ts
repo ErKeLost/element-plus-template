@@ -16,10 +16,7 @@ import Inspect from 'vite-plugin-inspect'
 // import svgLoader from 'vite-svg-loader' // 打包问题
 import OptimizationPersist from 'vite-plugin-optimize-persist'
 import PkgConfig from 'vite-plugin-package-config'
-import {
-  ElementPlusResolver,
-  VueUseComponentsResolver
-} from 'unplugin-vue-components/resolvers'
+import { ElementPlusResolver, VueUseComponentsResolver } from 'unplugin-vue-components/resolvers'
 const pathSrc = path.resolve(__dirname, 'src')
 // function pathResolve(dir: string) {
 //   return path.resolve(process.cwd(), '.', dir)

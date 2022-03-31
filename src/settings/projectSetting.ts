@@ -5,6 +5,11 @@ const projectSetting = {
   navTheme: 'dark',
   // 是否处于移动端模式
   isMobile: false,
+  // slider 样式
+  sideSetting: {
+    // 宽度
+    width: 200
+  },
   // 顶部
   headerSetting: {
     height: 80,

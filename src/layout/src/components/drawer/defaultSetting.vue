@@ -1,4 +1,5 @@
 <template>
+  <!-- <el-scrollbar> -->
   <div class="setting">
     <span class="setting-title">项目配置</span>
     <el-divider>
@@ -82,11 +83,7 @@
       </div>
 
       <div class="drawer-setting-item-style align-items-top">
-        <el-tooltip
-          effect="dark"
-          content="顶部菜单混合模式"
-          placement="top-start"
-        >
+        <el-tooltip effect="dark" content="顶部菜单混合模式" placement="top-start">
           <img
             src="../../../../assets/images/nav-horizontal-mix.svg"
             alt="顶部菜单混合模式"
@@ -134,24 +131,23 @@
     <div class="drawer-setting-slider">
       <div class="drawer-setting-switch-title">Heade高度</div>
       <div class="slider">
-        <el-slider
-          v-model="settingStore.headerSetting.height"
-          :min="60"
-          :max="150"
-        />
+        <el-slider v-model="settingStore.headerSetting.height" :min="60" :max="150" />
+      </div>
+    </div>
+    <div class="drawer-setting-slider">
+      <div class="drawer-setting-switch-title">Side宽度</div>
+      <div class="slider">
+        <el-slider v-model="settingStore.sideSetting.width" :min="180" :max="250" />
       </div>
     </div>
     <div class="drawer-setting-slider">
       <div class="drawer-setting-switch-title">Footer高度</div>
       <div class="slider">
-        <el-slider
-          v-model="settingStore.footerSetting.height"
-          :min="60"
-          :max="150"
-        />
+        <el-slider v-model="settingStore.footerSetting.height" :min="60" :max="150" />
       </div>
     </div>
   </div>
+  <!-- </el-scrollbar> -->
 </template>
 <script lang="ts" setup>
 import { useProjectSettingStore } from '~/store/modules/projectSetting'

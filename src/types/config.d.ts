@@ -27,7 +27,9 @@ export interface IheaderSetting {
   fixed: boolean
   isReload: boolean
 }
-
+export interface ISideSetting {
+  width: number
+}
 export interface ImenuSetting {
   minMenuWidth: number
   menuWidth: number

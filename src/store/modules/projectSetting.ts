@@ -5,6 +5,7 @@ import type {
   IcrumbsSetting,
   IheaderSetting,
   ImenuSetting,
+  ISideSetting,
   ImultiTabsSetting
 } from '~/types/config'
 
@@ -12,6 +13,7 @@ const {
   navMode,
   navTheme,
   isMobile,
+  sideSetting,
   headerSetting,
   footerSetting,
   showFooter,
@@ -25,6 +27,7 @@ const {
 interface ProjectSettingState {
   navMode: string // 导航模式
   navTheme: string // 导航风格
+  sideSetting: ISideSetting // 侧边栏设置
   headerSetting: IheaderSetting // 顶部设置
   footerSetting: any
   showFooter: boolean // 页脚
@@ -42,6 +45,7 @@ export const useProjectSettingStore = defineStore({
     navMode,
     navTheme,
     isMobile,
+    sideSetting,
     headerSetting,
     footerSetting,
     showFooter,
@@ -61,6 +65,9 @@ export const useProjectSettingStore = defineStore({
     },
     getIsMobile(): boolean {
       return this.isMobile
+    },
+    getSideSetting(): ISideSetting {
+      return this.sideSetting
     },
     getHeaderSetting(): object {
       return this.headerSetting

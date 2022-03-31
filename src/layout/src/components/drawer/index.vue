@@ -1,20 +1,10 @@
 <template>
-  <el-button
-    circle
-    size="large"
-    class="drawer-setting"
-    @click="showDefaultSetting = true"
-  >
+  <el-button circle size="large" class="drawer-setting" @click="showDefaultSetting = true">
     <el-icon class="is-loading" :size="27">
       <CarbonSettings />
     </el-icon>
   </el-button>
-  <el-drawer
-    v-model="showDefaultSetting"
-    :with-header="false"
-    :append-to-body="true"
-    size="30%"
-  >
+  <el-drawer v-model="showDefaultSetting" :with-header="false" :append-to-body="true" size="30%">
     <div class="default-setting-container">
       <defaultSetting />
     </div>

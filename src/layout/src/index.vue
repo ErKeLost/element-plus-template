@@ -4,6 +4,7 @@
     <el-container class="main-content">
       <el-header
         :height="`${getHeaderSetting.height}px`"
+        :style="{ marginLeft: settingStore.menuSetting.fixed ? `${getSideSetting.width}px` : '' }"
         :class="[
           settingStore.headerSetting.fixed ? ['header-fixed'] : '',
           settingStore.menuSetting.fixed ? ['menu-margin'] : ''
@@ -14,22 +15,19 @@
       <el-container
         :class="settingStore.headerSetting.fixed ? ['page-content'] : ''"
         :style="[
-          settingStore.headerSetting.fixed
-            ? { marginTop: `${getHeaderSetting.height}px` }
-            : ''
+          settingStore.headerSetting.fixed ? { marginTop: `${getHeaderSetting.height}px` } : ''
         ]"
       >
         <el-aside
           :class="[
+            'side-setting-class',
             settingStore.menuSetting.fixed ? 'aside-fixed' : '',
             settingStore.menuSetting.headerFixed ? 'aside-headerFixed' : ''
           ]"
           :style="[
-            settingStore.menuSetting.headerFixed
-              ? { top: `${getHeaderSetting.height}px` }
-              : ''
+            settingStore.menuSetting.headerFixed ? { top: `${getHeaderSetting.height}px` } : ''
           ]"
-          width="200px"
+          :width="`${getSideSetting.width}px`"
         >
           <div style="width: 100%; height: 500px; background-color: #bfa" />
         </el-aside>
@@ -43,15 +41,10 @@
             <i-ep-add-location />
             <i-ep-aim />
             <i-ep-picture-rounded color="red" font-size="30px" />
-            <div
-              v-loading="{ text: 'I LOVE YOU 我是不一样的版本...' }"
-              style="height: 500px"
-            >
+            <div v-loading="{ text: 'I LOVE YOU 我是不一样的版本...' }" style="height: 500px">
               Loading Area
             </div>
-            <div v-loading="{ text: 'erkelost adny...' }" style="height: 500px">
-              Loading Area
-            </div>
+            <div v-loading="{ text: 'erkelost adny...' }" style="height: 500px">Loading Area</div>
             <div style="height: 1500px">
               <el-button @click="showMessage">测试elmessage</el-button>
             </div>
@@ -62,12 +55,14 @@
           <el-footer
             :class="[
               settingStore.footerSetting.fixed ? 'page-footer' : '',
-              settingStore.menuSetting.fixed ||
-              settingStore.menuSetting.headerFixed
+              settingStore.menuSetting.fixed || settingStore.menuSetting.headerFixed
                 ? ['menu-margin']
                 : ''
             ]"
-            :style="{ height: `${getFooterSetting.height}px` }"
+            :style="{
+              height: `${getFooterSetting.height}px`,
+              marginLeft: settingStore.menuSetting.fixed ? `${getSideSetting.width}px` : ''
+            }"
           >
             <Footer />
           </el-footer>
@@ -80,7 +75,7 @@
 import { useProjectSettingStore } from '~/store/modules/projectSetting'
 import { useProjectSetting } from '~/composables/setting/useProjectSetting'
 const settingStore = useProjectSettingStore()
-const { getHeaderSetting, getFooterSetting } = useProjectSetting()
+const { getHeaderSetting, getFooterSetting, getSideSetting } = useProjectSetting()
 console.log(getFooterSetting.value)
 console.log(getFooterSetting)
 const showMessage = () => {
@@ -91,14 +86,22 @@ const showMessage = () => {
   })
 }
 const height = ref(`${getFooterSetting.value.height}px`)
-watch(height, (newVal) => {
-  console.log(newVal)
-})
-console.log(height.value)
+const menuContainerMargin = ref(`${getSideSetting.value.width}px`)
+watch(
+  () => getSideSetting.value,
+  (newVal) => {
+    console.log(newVal)
+  }
+)
+console.log(getSideSetting.value.width)
 </script>
 <style scoped lang="scss">
+.side-setting-class {
+  position: relative;
+  z-index: 2001;
+}
 .menu-margin {
-  margin-left: 200px;
+  margin-left: 250px;
 }
 .page-content {
   // margin-top: 80px;
@@ -172,6 +175,6 @@ console.log(height.value)
   padding: 0;
 }
 .el-footer {
-  height: v-bind(height);
+  // height: v-bind(height);
 }
 </style>
