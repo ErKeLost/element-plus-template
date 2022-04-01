@@ -37,6 +37,9 @@
               settingStore.menuSetting.fixed ? ['menu-margin'] : '',
               settingStore.menuSetting.headerFixed ? ['menu-margin'] : ''
             ]"
+            :style="{
+              marginLeft: settingStore.menuSetting.headerFixed ? `${getSideSetting.width}px` : ''
+            }"
           >
             <i-ep-add-location />
             <i-ep-aim />
@@ -61,7 +64,8 @@
             ]"
             :style="{
               height: `${getFooterSetting.height}px`,
-              marginLeft: settingStore.menuSetting.fixed ? `${getSideSetting.width}px` : ''
+              marginLeft: settingStore.menuSetting.fixed ? `${getSideSetting.width}px` : '',
+              marginLeft: settingStore.menuSetting.headerFixed ? `${getSideSetting.width}px` : ''
             }"
           >
             <Footer />
@@ -101,7 +105,7 @@ console.log(getSideSetting.value.width)
   z-index: 2001;
 }
 .menu-margin {
-  margin-left: 250px;
+  // margin-left: 250px;
 }
 .page-content {
   // margin-top: 80px;
