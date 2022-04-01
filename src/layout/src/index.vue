@@ -110,8 +110,8 @@ const showMessage = () => {
     type: 'success'
   })
 }
-const height = ref(`${getFooterSetting.value.height}px`)
-const menuContainerMargin = ref(`${getSideSetting.value.width}px`)
+// const height = ref(`${getFooterSetting.value.height}px`)
+// const menuContainerMargin = ref(`${getSideSetting.value.width}px`)
 watch(
   () => getSideSetting.value,
   (newVal) => {
