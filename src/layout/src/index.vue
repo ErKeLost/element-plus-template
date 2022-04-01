@@ -3,6 +3,7 @@
   <div>
     <el-container class="main-content">
       <el-header
+        v-if="settingStore.headerSetting.showHeader"
         :height="`${getHeaderSetting.height}px`"
         :style="{ marginLeft: settingStore.menuSetting.fixed ? `${getSideSetting.width}px` : '' }"
         :class="[
@@ -15,10 +16,13 @@
       <el-container
         :class="settingStore.headerSetting.fixed ? ['page-content'] : ''"
         :style="[
-          settingStore.headerSetting.fixed ? { marginTop: `${getHeaderSetting.height}px` } : ''
+          settingStore.headerSetting.fixed && settingStore.headerSetting.showHeader
+            ? { marginTop: `${getHeaderSetting.height}px` }
+            : ''
         ]"
       >
         <el-aside
+          v-if="settingStore.sideSetting.showSide"
           :class="[
             'side-setting-class',
             settingStore.menuSetting.fixed ? 'aside-fixed' : '',
@@ -31,31 +35,42 @@
         >
           <div style="width: 100%; height: 500px; background-color: #bfa" />
         </el-aside>
-        <el-container>
+        <el-container class="[settingStore.sideSetting.showSide ? 'full-container' : '']">
           <el-main
             :class="[
               settingStore.menuSetting.fixed ? ['menu-margin'] : '',
               settingStore.menuSetting.headerFixed ? ['menu-margin'] : ''
             ]"
             :style="{
-              marginLeft: settingStore.menuSetting.headerFixed ? `${getSideSetting.width}px` : ''
+              marginLeft:
+                settingStore.menuSetting.headerFixed && settingStore.sideSetting.showSide
+                  ? `${getSideSetting.width}px`
+                  : '',
+              marginBottom:
+                settingStore.footerSetting.fixed && settingStore.footerSetting.showFooter
+                  ? `${getFooterSetting.height}px`
+                  : ''
             }"
           >
-            <i-ep-add-location />
-            <i-ep-aim />
-            <i-ep-picture-rounded color="red" font-size="30px" />
-            <div v-loading="{ text: 'I LOVE YOU 我是不一样的版本...' }" style="height: 500px">
-              Loading Area
-            </div>
-            <div v-loading="{ text: 'erkelost adny...' }" style="height: 500px">Loading Area</div>
-            <div style="height: 1500px">
-              <el-button @click="showMessage">测试elmessage</el-button>
-            </div>
-            <div style="height: 1500px">
-              <el-button @click="showMessage">测试elmessage</el-button>
+            <div style="background: #eab">
+              <i-ep-add-location />
+              <i-ep-aim />
+              <i-ep-picture-rounded color="red" font-size="30px" />
+              <div v-loading="{ text: 'I LOVE YOU 我是不一样的版本...' }" style="height: 500px">
+                Loading Area
+              </div>
+              <div v-loading="{ text: 'erkelost adny...' }" style="height: 500px">Loading Area</div>
+              <div style="height: 1500px">
+                <el-button @click="showMessage">测试elmessage</el-button>
+              </div>
+              <div style="height: 1500px">
+                <el-button @click="showMessage">测试elmessage</el-button>
+              </div>
+              4153456456465
             </div>
           </el-main>
           <el-footer
+            v-if="settingStore.footerSetting.showFooter"
             :class="[
               settingStore.footerSetting.fixed ? 'page-footer' : '',
               settingStore.menuSetting.fixed || settingStore.menuSetting.headerFixed
@@ -64,8 +79,14 @@
             ]"
             :style="{
               height: `${getFooterSetting.height}px`,
-              marginLeft: settingStore.menuSetting.fixed ? `${getSideSetting.width}px` : '',
-              marginLeft: settingStore.menuSetting.headerFixed ? `${getSideSetting.width}px` : ''
+              marginLeft:
+                settingStore.menuSetting.fixed && settingStore.sideSetting.showSide
+                  ? `${getSideSetting.width}px`
+                  : '',
+              marginLeft:
+                settingStore.menuSetting.headerFixed && settingStore.sideSetting.showSide
+                  ? `${getSideSetting.width}px`
+                  : ''
             }"
           >
             <Footer />
@@ -100,6 +121,9 @@ watch(
 console.log(getSideSetting.value.width)
 </script>
 <style scoped lang="scss">
+.full-container {
+  width: 100vw;
+}
 .side-setting-class {
   position: relative;
   z-index: 2001;

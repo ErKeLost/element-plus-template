@@ -22,12 +22,14 @@ export interface IbodySetting {
 }
 
 export interface IheaderSetting {
+  showHeader: boolean
   height: number
   bgColor: string
   fixed: boolean
   isReload: boolean
 }
 export interface ISideSetting {
+  showSide: boolean
   width: number
 }
 export interface ImenuSetting {

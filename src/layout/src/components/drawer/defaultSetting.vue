@@ -131,32 +131,23 @@
     <div class="drawer-setting-switch">
       <div class="drawer-setting-switch-title">是否展示Aside</div>
       <div class="drawer-setting-switch-action">
-        <el-switch
-          v-model="settingStore.menuSetting.headerFixed"
-          :disabled="settingStore.menuSetting.fixed"
-        />
+        <el-switch v-model="settingStore.sideSetting.showSide" />
       </div>
     </div>
     <div class="drawer-setting-switch">
       <div class="drawer-setting-switch-title">是否展示Footer</div>
       <div class="drawer-setting-switch-action">
-        <el-switch
-          v-model="settingStore.menuSetting.headerFixed"
-          :disabled="settingStore.menuSetting.fixed"
-        />
+        <el-switch v-model="settingStore.footerSetting.showFooter" />
       </div>
     </div>
     <div class="drawer-setting-switch">
       <div class="drawer-setting-switch-title">是否展示Header</div>
       <div class="drawer-setting-switch-action">
-        <el-switch
-          v-model="settingStore.menuSetting.headerFixed"
-          :disabled="settingStore.menuSetting.fixed"
-        />
+        <el-switch v-model="settingStore.headerSetting.showHeader" />
       </div>
     </div>
     <div class="drawer-setting-slider">
-      <div class="drawer-setting-switch-title">Heade高度</div>
+      <div class="drawer-setting-switch-title">Header高度</div>
       <div class="slider">
         <el-slider v-model="settingStore.headerSetting.height" :min="60" :max="150" />
       </div>

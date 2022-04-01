@@ -7,11 +7,15 @@ const projectSetting = {
   isMobile: false,
   // slider 样式
   sideSetting: {
+    showSide: true,
     // 宽度
     width: 200
   },
   // 顶部
   headerSetting: {
+    // 是否展示header
+    showHeader: true,
+    // header height
     height: 80,
     // 背景色
     bgColor: '#fff',
@@ -21,6 +25,8 @@ const projectSetting = {
     isReload: true
   },
   footerSetting: {
+    // 是否展示footer
+    showFooter: true,
     height: 113,
     // 背景色
     bgColor: '#fff',
@@ -53,7 +59,7 @@ const projectSetting = {
     mixMenu: false,
     // 触发移动端侧边栏的宽度
     mobileWidth: 800,
-    // 隐藏silder
+    // 隐藏slider
     collapsed: false
   },
   // 面包屑
