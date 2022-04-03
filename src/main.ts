@@ -9,8 +9,6 @@ import '@unocss/reset/tailwind.css'
 import './styles/main.css'
 import './styles/nprogress.scss'
 import 'uno.css'
-console.log(router)
-
 const app = createApp(App)
 // page 文件路由系统
 // const router = createRouter({

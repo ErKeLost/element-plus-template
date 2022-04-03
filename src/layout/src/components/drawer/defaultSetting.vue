@@ -105,6 +105,12 @@
       </div>
     </div>
     <div class="drawer-setting-switch">
+      <div class="drawer-setting-switch-title">滚动距离大于多少后固定顶栏</div>
+      <div class="slider">
+        <el-slider v-model="settingStore.headerSetting.scroll" :min="80" :max="250" />
+      </div>
+    </div>
+    <div class="drawer-setting-switch">
       <div class="drawer-setting-switch-title">固定侧边栏</div>
       <div class="drawer-setting-switch-action">
         <el-switch

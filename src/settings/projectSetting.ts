@@ -13,6 +13,8 @@ const projectSetting = {
   },
   // 顶部
   headerSetting: {
+    // 滚动 固定 header 距离
+    scroll: 80,
     // 是否展示header
     showHeader: true,
     // header height

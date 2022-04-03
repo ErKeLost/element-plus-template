@@ -4,6 +4,7 @@
     <el-container class="main-content">
       <el-header
         v-if="settingStore.headerSetting.showHeader"
+        ref="header"
         :height="`${getHeaderSetting.height}px`"
         :style="{ marginLeft: settingStore.menuSetting.fixed ? `${getSideSetting.width}px` : '' }"
         :class="[
@@ -101,8 +102,6 @@ import { useProjectSettingStore } from '~/store/modules/projectSetting'
 import { useProjectSetting } from '~/composables/setting/useProjectSetting'
 const settingStore = useProjectSettingStore()
 const { getHeaderSetting, getFooterSetting, getSideSetting } = useProjectSetting()
-console.log(getFooterSetting.value)
-console.log(getFooterSetting)
 const showMessage = () => {
   ElMessage({
     message: 'this is a message.',
@@ -110,15 +109,27 @@ const showMessage = () => {
     type: 'success'
   })
 }
-// const height = ref(`${getFooterSetting.value.height}px`)
-// const menuContainerMargin = ref(`${getSideSetting.value.width}px`)
 watch(
   () => getSideSetting.value,
   (newVal) => {
     console.log(newVal)
   }
 )
-console.log(getSideSetting.value.width)
+const header = ref(null)
+watch(
+  () => getHeaderSetting.value.fixed,
+  (newVal) => {
+    if (!newVal) {
+      window.addEventListener('scroll', () => {
+        if (document.documentElement.scrollTop >= getHeaderSetting.value.scroll) {
+          settingStore.headerSetting.fixed = true
+        } else {
+          settingStore.headerSetting.fixed = false
+        }
+      })
+    }
+  }
+)
 </script>
 <style scoped lang="scss">
 .full-container {

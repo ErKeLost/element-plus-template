@@ -151,7 +151,7 @@ export default defineConfig(async (env) => {
         : checker({
             enableBuild: false,
             typescript: true,
-            vueTsc: true,
+            // vueTsc: true,
             eslint: {
               lintCommand: 'eslint "./src/**/*.{ts,tsx,vue}"',
               dev: {
